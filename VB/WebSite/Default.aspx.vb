@@ -7,8 +7,7 @@ Imports System.Web.UI
 Imports System.Web.UI.WebControls
 Imports System.Web.UI.WebControls.WebParts
 Imports System.Web.UI.HtmlControls
-Imports DevExpress.Web.ASPxGridView
-Imports DevExpress.Web.ASPxEditors
+Imports DevExpress.Web
 
 Partial Public Class _Default
     Inherits System.Web.UI.Page
@@ -16,14 +15,14 @@ Partial Public Class _Default
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs)
 
     End Sub
-    Protected Sub grid_CustomUnboundColumnData(ByVal sender As Object, ByVal e As DevExpress.Web.ASPxGridView.ASPxGridViewColumnDataEventArgs)
+    Protected Sub grid_CustomUnboundColumnData(ByVal sender As Object, ByVal e As DevExpress.Web.ASPxGridViewColumnDataEventArgs)
         If e.Column.FieldName = "UrlText" Then
             Dim url As String = e.GetListSourceFieldValue("NavigateUrl").ToString()
             e.Value = url
         End If
     End Sub
 
-    Protected Sub cb_Callback(ByVal source As Object, ByVal e As DevExpress.Web.ASPxCallback.CallbackEventArgs)
+    Protected Sub cb_Callback(ByVal source As Object, ByVal e As DevExpress.Web.CallbackEventArgs)
         e.Result = GetText(e.Parameter)
     End Sub
 

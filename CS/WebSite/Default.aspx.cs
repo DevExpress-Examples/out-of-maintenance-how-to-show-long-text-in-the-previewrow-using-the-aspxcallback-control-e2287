@@ -7,21 +7,20 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-using DevExpress.Web.ASPxGridView;
-using DevExpress.Web.ASPxEditors;
+using DevExpress.Web;
 
 public partial class _Default : System.Web.UI.Page {
     protected void Page_Load(object sender, EventArgs e) {
 
     }
-    protected void grid_CustomUnboundColumnData(object sender, DevExpress.Web.ASPxGridView.ASPxGridViewColumnDataEventArgs e) {
+    protected void grid_CustomUnboundColumnData(object sender, DevExpress.Web.ASPxGridViewColumnDataEventArgs e) {
         if (e.Column.FieldName == "UrlText") {
             String url = e.GetListSourceFieldValue("NavigateUrl").ToString();
             e.Value = url ;
         }
     }
 
-    protected void cb_Callback(object source, DevExpress.Web.ASPxCallback.CallbackEventArgs e) {
+    protected void cb_Callback(object source, DevExpress.Web.CallbackEventArgs e) {
         e.Result = GetText(e.Parameter);
     }
 
